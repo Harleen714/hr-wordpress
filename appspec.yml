@@ -6,6 +6,11 @@ files:
 
 
 hooks:
+   Afterinstall:
+         - location: /script/afterinstall.sh
+           timeout: 500
+           runas: root
+
    ApplicationStop:
          - location: /script/stop_script.sh
            timeout: 300
