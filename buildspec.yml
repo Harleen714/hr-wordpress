@@ -4,7 +4,7 @@ env:
    parameter-store:
            DB_Name: "/kamal/db_name"
            DB_User: "/kamal/db_user"
-           DB_Password: "/kamal/db_password"
+           DB_Password: "/kamal/db_pass"
            DB_Host: "/kamal/db_host"
 
 
