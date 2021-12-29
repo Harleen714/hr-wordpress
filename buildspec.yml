@@ -12,12 +12,24 @@ env:
 
                
 phases:
-   build:
-        commands:
-            - sed -i 's/database_name_here/'$DB_Name'/' wp-config.php
-            - sed -i 's/username_here/'$DB_User'/' wp-config.php
-            - sed -i 's/password_here/'$DB_Password'/' wp-config.php
-            - sed -i 's/localhost/'$DB_Host'/' wp-config.php
+         
+  pre_build:
+    commands:
+      - apt update -y
+      - echo Installing source wordpress dependencies.
+      - apt install nginx -y
+      
+  build:
+    commands:
+      - sed -i 's/database_name_here/'$DB_Name'/' wp-config.php
+      - sed -i 's/username_here/'$DB_User'/' wp-config.php
+      - sed -i 's/password_here/'$DB_Password'/' wp-config.php
+      - sed -i 's/localhost/'$DB_Host'/' wp-config.php
+      - echo Build started on `date`
+      - echo Compiling the wordpress code
+  post_build:
+    commands:
+      - echo Build completed on `date`
             
 artifacts:
         files:
